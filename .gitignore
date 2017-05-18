@@ -1,0 +1,6 @@
+dist/
+module/
+browser/
+node_modules/
+*.log
+*.orig

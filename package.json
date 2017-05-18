@@ -1,0 +1,29 @@
+{
+  "name": "example-webpack-dependency",
+  "version": "1.0.0",
+  "description": "Dependency of a project using webpack for bundling.",
+  "main": "dist/index.js",
+  "browser": "./browser/index.js",
+  "module": "./module/index.js",
+  "author": "Nicolas Cochard",
+  "license": "MIT",
+  "homepage": "https://github.com/ncochard/example-webpack-dependency#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncochard/example-webpack-dependency.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist module browser",
+    "transpile-code-4-node": "cross-env BABEL_ENV=development babel ./src --out-dir ./dist --source-maps --copy-files",
+    "transpile-code-4-browser-bundle": "cross-env BABEL_ENV=browser babel ./src --out-dir ./browser --source-maps --copy-files",
+    "transpile-code-4-server-bundle": "cross-env BABEL_ENV=module babel ./src --out-dir ./module --source-maps --copy-files",
+    "build": "npm run transpile-code-4-node && npm run transpile-code-4-browser-bundle && npm run transpile-code-4-server-bundle",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "rimraf": "^2.6.1"
+  }
+}
